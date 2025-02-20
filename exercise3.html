@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise3</title>
+    <style>
+        .picture {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .picture img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons button.active {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="buttons">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="nature">Nature</button>
+        <button data-filter="city">City</button>
+        <button data-filter="animals">Animals</button>
+    </div>
+
+    <div class="picture">
+        <img src="https://www.maxfosterphotography.com/images/xl/Rise-Above.jpg" alt="Nature 1" data-category="nature">
+        <img src="https://ts1.cn.mm.bing.net/th/id/R-C.84cb47f936cc59337677ad31ab14d5bc?rik=YJ%2f7oDHFUr0Ckw&riu=http%3a%2f%2fpmo6f928b.pic46.websiteonline.cn%2fupload%2f6915203(1).jpg&ehk=m8RASAQsOLGtrmZOg0iWAirqUIpstvdSa3dlSJWprK8%3d&risl=&pid=ImgRaw&r=0" alt="City 1" data-category="city">
+        <img src="https://ts1.cn.mm.bing.net/th/id/R-C.00ca406904e9479d0c81d1cef257e875?rik=WECp1X1AGDFgLw&riu=http%3a%2f%2fk34.kn3.net%2ftaringa%2f1%2f1%2f1%2f3%2f1%2f6%2f34%2fagustoth56%2f380.jpg%3f5532&ehk=VDU9KC9UDXWKNgAPIbCiYC8CB7x3x0HpnYK0dF2jpBA%3d&risl=&pid=ImgRaw&r=0" alt="Animals 1" data-category="animals">
+        <img src="https://ts1.cn.mm.bing.net/th/id/R-C.616a8f9fc897e4be3450e83cc349163b?rik=99NhcoYMbpPmbA&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f01%2f200876-nature-landscape-water.jpg&ehk=QcolhuooocpOvG0IUsYFYzY1xMzqLRuXNENX8S3%2btyI%3d&risl=&pid=ImgRaw&r=0" alt="Nature 2" data-category="nature">
+        <img src="https://ts1.cn.mm.bing.net/th/id/R-C.3d8103250717ef13968eda10746576a7?rik=VNuazFbxlFyr9g&riu=http%3a%2f%2fseopic.699pic.com%2fphoto%2f50033%2f5053.jpg_wh1200.jpg&ehk=Sr0t14Tvdfv3w4hCk%2bXGij657b6DnqI8EJHolx4lTyc%3d&risl=&pid=ImgRaw&r=0" alt="City 2" data-category="city">
+        <img src="https://i2.wp.com/earthnworld.com/wp-content/uploads/2017/07/Red-Panda.jpg?ssl=1" alt="Animals 2" data-category="animals">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.buttons button');
+            const images = document.querySelectorAll('.picture img');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+
+                    buttons.forEach(btn => btn.classList.remove('active'));
+
+                    this.classList.add('active');
+
+                    images.forEach(image => {
+                        if (filter === 'all' || image.getAttribute('data-category') === filter) {
+                            image.style.display = 'block';
+                        } else {
+                            image.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
