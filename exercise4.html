@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic List Generator</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px; /* 增加了padding使按钮变大 */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px; /* 增加字体大小 */
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<button class="button" onclick="addListItem()">Generate Item</button>
+<div class="list">
+    <ul id="List">
+
+    </ul>
+</div>
+
+<script>
+    let itemCounter = 1;
+
+    function addListItem() {
+
+        const list = document.getElementById('List');
+        
+        const newItem = document.createElement('li');
+        newItem.textContent = itemCounter++;
+        
+        list.appendChild(newItem);
+    }
+</script>
+</body>
+</html>
