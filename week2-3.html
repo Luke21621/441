@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function changeText() {
+            document.getElementById('example1').innerHTML = 'Text has been successfully changed!';
+        }
+
+        function addElement() {
+            var newDiv = document.createElement("div");
+            var newContent = document.createTextNode("This is a new addition.");
+            newDiv.appendChild(newContent);
+            document.body.insertBefore(newDiv, document.getElementById('examples').nextSibling);
+        }
+    </script>
+</head>
+<body>
+
+<h1>About the Document Object Model (DOM)</h1>
+<p><strong>Document Object Model (DOM)</strong>It is a programming interface for HTML and XML documents. It represents the document as a tree structure of nodes and objects, allowing the programming language to interact with and modify the page. With the DOM, developers can create highly interactive web pages, such as responding to user actions, dynamically displaying content, and so on.</p>
+
+<h2>Change the text content on the page</h2>
+<p id="example1">This is the original text, click the button below to change this text.</p>
+<button onclick="changeText()">Change the text</button>
+
+<h2>Add a new HTML element</h2>
+<div id="examples">Below the paragraph will be a button that, when clicked, will add a new HTML element to the page.</div>
+<button onclick="addElement()">Add a new element</button>
+
+</body>
+</html>

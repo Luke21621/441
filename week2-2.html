@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie management</title>
+    <style>
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cookie management</h1>
+    <button onclick="setCookie()">Set Cookie</button>
+    <button onclick="getCookie()">Read Cookie</button>
+    <button onclick="deleteCookie()">Destroy Cookie</button>
+
+    <p id="cookieStatus"></p>
+
+    <script>
+        function setCookie() {
+            const cookieValue = prompt("Please enter the cookie value you want to set：");
+            if (cookieValue) {
+                document.cookie = "userCookie=" + encodeURIComponent(cookieValue) + "; path=/;";
+                document.getElementById("cookieStatus").textContent = "Cookie set: " + cookieValue;
+            } else {
+                document.getElementById("cookieStatus").textContent = "Cookie setting cancel";
+            }
+        }
+
+        function getCookie() {
+            const cookies = document.cookie.split('; ');
+            const cookie = cookies.find(row => row.startsWith('userCookie='));
+            if (cookie) {
+                document.getElementById("cookieStatus").textContent = "Current Cookie value: " + decodeURIComponent(cookie.split('=')[1]);
+            } else {
+                document.getElementById("cookieStatus").textContent = "No Cookie set";
+            }
+        }
+
+        function deleteCookie() {
+            document.cookie = "userCookie=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+            document.getElementById("cookieStatus").textContent = "The Cookie has been destroyed.";
+        }
+    </script>
+</body>
+</html>

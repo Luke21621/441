@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Display information</title>
+    <script type="text/javascript">
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        window.onload = function() {
+            document.getElementById('showName').innerText = getQueryParam('name') || 'Not provide';
+            document.getElementById('showPhone').innerText = getQueryParam('phone') || 'Not provide';
+            document.getElementById('showAddress').innerText = getQueryParam('address') || 'Not provide';
+        }
+    </script>
+</head>
+<body>
+<h2>The information you entered is as follows：</h2>
+<p>Name: <span id="showName"></span></p>
+<p>Phone: <span id="showPhone"></span></p>
+<p>Address: <span id="showAddress"></span></p>
+</body>
+</html>
