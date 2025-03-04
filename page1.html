@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 1</title>
+    <script type="text/javascript">
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function deleteCookie(cname) {
+            document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+        function setNameCookie() {
+            var name = prompt("Please enter your name：");
+            if (name != null && name != "") {
+                setCookie("username", name, 30);
+                alert("The cookie value has been set to：" + name);
+            }
+        }
+
+        function destroyNameCookie() {
+            deleteCookie("username");
+            alert("The cookie has been destroyed.");
+        }
+    </script>
+</head>
+<body>
+    <h1>Page 1</h1>
+    <button onclick="setNameCookie()">Set the cookie value to your name</button>
+    <button onclick="destroyNameCookie()">Destroy this cookie</button>
+    <p>Click the button to set or delete the cookie, you can access it<a href="page2.html">page2</a>View cookie values.</p>
+</body>
+</html>

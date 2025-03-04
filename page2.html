@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 2</title>
+    <script type="text/javascript">
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function displayCookie() {
+            var username = getCookie("username");
+            if (username) {
+                alert("The name read from the Cookie is：" + username);
+            } else {
+                alert("No cookie named 'username' found.");
+            }
+        }
+
+        window.onload = function() {
+            displayCookie();
+        };
+    </script>
+</head>
+<body>
+    <h1>Page 2</h1>
+    <p>This page will attempt to read your name from the Cookie.</p>
+    <button onclick="displayCookie()">Read Cookie</button>
+    <p>返回<a href="page1.html">page1</a>Set or delete cookies.</p>
+</body>
+</html>
